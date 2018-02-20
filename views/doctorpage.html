@@ -20,11 +20,15 @@ Doctor's view
 <script type="text/javascript">
 angular.module('doctor',[]).controller('MainCtrl', [function() {
 var self = this; 
-
+var newText = $('textarea').val(); //value
+newText = newText.replace(/\r?\n/g, '<br />');
 self.submit = function() {
             // Create user object to send to the server
              var myJSON = JSON.stringify(self);
+             document.write( myJSON );
+             document.write( newText);
 $http.post('localhost:3000/untitled', myJSON);
+
 
           }; 
           
