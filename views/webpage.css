@@ -1,0 +1,53 @@
+body 
+{
+	background-color: #360F59;
+}
+#backgroundimage
+{
+	
+
+	background-position: center;
+}
+#baymax
+{
+	position: absolute;
+	left:0px;
+	bottom:0px;
+	height:179px;
+	width:141px;
+}
+#username
+{
+	position: absolute;
+	background-color: white;
+	left:430px;
+	top:286px;
+	color:#360F59;
+	width: 388px;
+	height: 40px;
+	border-radius: 50px;
+	border:white;
+	font-size: 25px;
+	padding-left: 10px;
+}
+#password
+{
+	position: absolute;
+	left:434px;
+	top:394px;
+	color:#360F59;
+	width: 388px;
+	height: 40px;
+	border-radius: 50px;
+	border: white;
+	font-size: 25px;
+	padding-left: 10px;
+}
+#submitbutton
+{
+	position:absolute;
+	left:548px;
+	top:469px;
+	width: 160px;
+	height: 300px;
+}
