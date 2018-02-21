@@ -15,65 +15,66 @@ Doctor's view
   });
 
   </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
-</script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script type="text/javascript">
-angular.module('doctor',[]).controller('MainCtrl', [function() {
-var self = this; 
-var newText = $('textarea').val(); //value
-newText = newText.replace(/\r?\n/g, '<br />');
-self.submit = function() {
-            // Create user object to send to the server
-             var myJSON = JSON.stringify(self);
-             document.write( myJSON );
-             document.write( newText);
-$http.post('localhost:3000/untitled', myJSON);
+var app = angular.module('doctor',[]);
+app.controller('MainCtrl', function ($scope, $http) {
+$scope.name = null;
 
-
-          }; 
-          
-
-         
-
- }]);
-
-
-
-
-
-    </script>
+$scope.postdata = function (name) {
+var data = {
+name: name
+};
+//Call the services
+$http.post('localhost:3000',JSON.stringify(data)).then(function (response) {
+if (response.data)
+$scope.msg = "Post Data Submitted Successfully!";
+}, function (response) {
+$scope.msg = "Service not Exists";
+$scope.statusval = response.status;
+$scope.statustext = response.statusText;
+$scope.headers = response.headers();
+});
+};
+});
+</script>
 
 </head>
-<body ng-controller="MainCtrl as ctrl" background="background.jpg">
+<body ng-controller="MainCtrl" background="background.jpg">
 	<ul>
 		<li id="list1"><a href=progile.asp><img id="profileicon" src="medical.jpg"><br>Your Profile</a></li>
 		<li id="list2"><a href="webpagecode.html"><img id="loginicon" src="loginicon.jpg"><br>Login page</a></li>
 		<li id="list3"><a href=about.asp><img id="abouticon" src="abouticon.jpg"><br>About</a></li>
 	</ul>
-<form id="doctorform" ng-submit="ctrl.submit()">
+<form id="doctorform">
 	<p id="nametext">Name:</p>
 
-	<input id="name" type="text" ng-model="ctrl.name">
+	<input id="name" type="text" ng-model="name" 
+	required/>
 	
 	<p id="gendertext">Gender:</p>
-	<input type="radio" value="male" ng-model="ctrl.gender"> <font color="white" size="3" face="Avenir Next"> Male</font>
-	<input type="radio" value="female" ng-model="ctrl.gender"><font color="white" size="3" face="Avenir Next"> Female</font>
-	<input id="age" type="number" ng-model="ctrl.age"><font id="agename" color="white" size="3" face="Avenir Next" >Age:</font>
+	<input type="radio" value="male" ng-model="ctrl.gender"
+	> <font color="white" size="3" face="Avenir Next"> Male</font>
+	<input type="radio" value="female" ng-model="ctrl.gender"
+	><font color="white" size="3" face="Avenir Next"> Female</font>
+	<input id="age" type="number" ng-model="ctrl.age"
+	><font id="agename" color="white" size="3" face="Avenir Next" >Age:</font>
 	<input id="weight" type="number" ng-model="ctrl.weight"><font id="weightname" color="white" size="3" face="Avenir Next">Weight:</font>
 	<input type="text"  id="datepicker" ng-model="ctrl.dob"><font id="dobname" color="white" size="3" face="Avenir Next">Date Of Birth:</font>
-	<input type="text" id="patientid" ng-model="ctrl.patientid"><font id="patientidname" color="white" size="3" face="Avenir Next">Patient ID:</font>
+	<input type="text" id="patientid" ng-model="ctrl.patientid"
+	><font id="patientidname" color="white" size="3" face="Avenir Next">Patient ID:</font>
 	<input type="text" id="medicine" ng-model="ctrl.medicine"><font id="medicineidname" color="white" size="3" face="Avenir Next">Medicine Name:</font>
 	<input type="text" id="dosage" ng-model="ctrl.dosage"><font id="dosageidname" color="white" size="3" face="Avenir Next">Dosage:</font>
 	<input type="text" id="duration" ng-model="ctrl.duration"><font id="durationidname" color="white" size="3" face="Avenir Next">Duration:</font>
 	<input type="number" name="nooftimes" id="times" ng-model="ctrl.times"><font id="timesidname" color="white" size="3" face="Avenir Next">No. of times to be taken per day:</font>
 	
 	
-<input id="submitbutton" type="submit" value="Submit">
+<input id="submitbutton" type="button" value="Send" ng-click="postdata(name)"/>
 <input id="resetbutton" type="reset">
 </form>
 <textarea id="symptomform" form="doctorform" ng-model="ctrl.symptoms" placeholder="Enter symptoms here:"></textarea>
 <textarea id="specialinstructionsform" form="doctorform" ng-model="ctrl.specialinstructions" placeholder="Enter special instructions here:"></textarea>
 
-  
+  <p>output message {{ msg }} </p>
 </body>
 </html>
