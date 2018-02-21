@@ -20,13 +20,33 @@ Doctor's view
 var app = angular.module('doctor',[]);
 app.controller('MainCtrl', function ($scope, $http) {
 $scope.name = null;
+$scope.gender = null;
+$scope.age = null;
+$scope.weight = null;
+$scope.p_id = null;
+$scope.symptoms = null;
+$scope.medicine = null;
+$scope.dosage = null;
+$scope.duration = null;
+$scope.nooftimes = null;
+$scope.specinst = null;
 
-$scope.postdata = function (name) {
+$scope.postdata = function (name, gender, age, weight, p_id, symptoms, medicine, dosage, duration, nooftimes, specinst) {
 var data = {
-name: name
+name: name,
+gender: gender,
+age: age,
+weight: weight,
+p_id: p_id,
+symptoms: symptoms,
+medicine: medicine,
+dosage: dosage,
+duration: duration,
+nooftimes: nooftimes,
+specinst: specinst
 };
 //Call the services
-$http.post('localhost:3000',JSON.stringify(data)).then(function (response) {
+$http.post('http://localhost:3000/',JSON.stringify(data)).then(function (response) {
 if (response.data)
 $scope.msg = "Post Data Submitted Successfully!";
 }, function (response) {
@@ -34,6 +54,7 @@ $scope.msg = "Service not Exists";
 $scope.statusval = response.status;
 $scope.statustext = response.statusText;
 $scope.headers = response.headers();
+;
 });
 };
 });
@@ -49,31 +70,26 @@ $scope.headers = response.headers();
 <form id="doctorform">
 	<p id="nametext">Name:</p>
 
-	<input id="name" type="text" ng-model="name" 
-	required/>
+	<input id="name" type="text" ng-model="name" required/>
 	
 	<p id="gendertext">Gender:</p>
-	<input type="radio" value="male" ng-model="ctrl.gender"
-	> <font color="white" size="3" face="Avenir Next"> Male</font>
-	<input type="radio" value="female" ng-model="ctrl.gender"
-	><font color="white" size="3" face="Avenir Next"> Female</font>
-	<input id="age" type="number" ng-model="ctrl.age"
-	><font id="agename" color="white" size="3" face="Avenir Next" >Age:</font>
-	<input id="weight" type="number" ng-model="ctrl.weight"><font id="weightname" color="white" size="3" face="Avenir Next">Weight:</font>
+	<input type="radio" value="male" ng-model="gender"> <font color="white" size="3" face="Avenir Next"> Male</font>
+	<input type="radio" value="female" ng-model="gender"><font color="white" size="3" face="Avenir Next"> Female</font>
+	<input id="age" type="number" ng-model="age"/><font id="agename" color="white" size="3" face="Avenir Next" >Age:</font>
+	<input id="weight" type="number" ng-model="weight"/><font id="weightname" color="white" size="3" face="Avenir Next">Weight:</font>
 	<input type="text"  id="datepicker" ng-model="ctrl.dob"><font id="dobname" color="white" size="3" face="Avenir Next">Date Of Birth:</font>
-	<input type="text" id="patientid" ng-model="ctrl.patientid"
-	><font id="patientidname" color="white" size="3" face="Avenir Next">Patient ID:</font>
-	<input type="text" id="medicine" ng-model="ctrl.medicine"><font id="medicineidname" color="white" size="3" face="Avenir Next">Medicine Name:</font>
-	<input type="text" id="dosage" ng-model="ctrl.dosage"><font id="dosageidname" color="white" size="3" face="Avenir Next">Dosage:</font>
-	<input type="text" id="duration" ng-model="ctrl.duration"><font id="durationidname" color="white" size="3" face="Avenir Next">Duration:</font>
-	<input type="number" name="nooftimes" id="times" ng-model="ctrl.times"><font id="timesidname" color="white" size="3" face="Avenir Next">No. of times to be taken per day:</font>
+	<input type="text" id="patientid" ng-model="p_id"/><font id="patientidname" color="white" size="3" face="Avenir Next">Patient ID:</font>
+	<input type="text" id="medicine" ng-model="medicine"/><font id="medicineidname" color="white" size="3" face="Avenir Next">Medicine Name:</font>
+	<input type="text" id="dosage" ng-model="dosage"/><font id="dosageidname" color="white" size="3" face="Avenir Next">Dosage:</font>
+	<input type="text" id="duration" ng-model="duration"/><font id="durationidname" color="white" size="3" face="Avenir Next">Duration:</font>
+	<input type="number" name="nooftimes" id="times" ng-model="nooftimes"/><font id="timesidname" color="white" size="3" face="Avenir Next">No. of times to be taken per day:</font>
 	
 	
-<input id="submitbutton" type="button" value="Send" ng-click="postdata(name)"/>
+<input id="submitbutton" type="button" value="Send" ng-click="postdata(name, gender, age, weight, p_id, symptoms, medicine, dosage, duration, nooftimes, specinst)"/>
 <input id="resetbutton" type="reset">
 </form>
-<textarea id="symptomform" form="doctorform" ng-model="ctrl.symptoms" placeholder="Enter symptoms here:"></textarea>
-<textarea id="specialinstructionsform" form="doctorform" ng-model="ctrl.specialinstructions" placeholder="Enter special instructions here:"></textarea>
+<textarea id="symptomform" form="doctorform" ng-model="symptoms" placeholder="Enter symptoms here:"></textarea>
+<textarea id="specialinstructionsform" form="doctorform" ng-model="specinst" placeholder="Enter special instructions here:"></textarea>
 
   <p>output message {{ msg }} </p>
 </body>
