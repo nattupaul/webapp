@@ -63,11 +63,12 @@ $scope.headers = response.headers();
 </head>
 <body ng-controller="MainCtrl" background="background.jpg">
 	<ul>
-		<li id="list1"><a href=progile.asp><img id="profileicon" src="medical.jpg"><br>Your Profile</a></li>
-		<li id="list2"><a href="webpagecode.html"><img id="loginicon" src="loginicon.jpg"><br>Login page</a></li>
-		<li id="list3"><a href=about.asp><img id="abouticon" src="abouticon.jpg"><br>About</a></li>
+		<li id="list1"><input type="image" id="profileicon" src="medical.jpg"><br><font color="white">Your Profile</font></input></li>
+		<li id="list2"><input type="image" id="loginicon" src="loginicon.jpg"><br><font color="white">Login page</font></input></li>
+		<li id="list3"><input type="image" id="abouticon" src="abouticon.jpg"><br><font color="white">About</font></input></li>
 	</ul>
 <form id="doctorform">
+
 	<p id="nametext">Name:</p>
 
 	<input id="name" type="text" ng-model="name" required/>
@@ -92,5 +93,54 @@ $scope.headers = response.headers();
 <textarea id="specialinstructionsform" form="doctorform" ng-model="specinst" placeholder="Enter special instructions here:"></textarea>
 
   <p>output message {{ msg }} </p>
+  
+
+
+
+
+
+<div id="myModal" class="modal">
+
+ 
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+<script type="text/javascript">
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("list1");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<script type="text/javascript">
+var login = document.getElementById("list2");
+login.onclick= function()
+{
+	window.location.replace("file:///Users/sangeetha/Desktop/Experimental/webpagecode.html");
+} 
+</script>
 </body>
 </html>

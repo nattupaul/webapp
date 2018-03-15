@@ -1,12 +1,13 @@
 body 
 {
 	background-color: #360F59;
+	
 }
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 150px;
+    
     background-color:#311549;
     height: 100%; 
     position: fixed; 
@@ -28,11 +29,13 @@ ul {
 	height:75px; 
 	width:75px;
 }
+
 #loginicon
 {
 	border-radius: 50px;
 	height: 75px;
 	width: 75px;
+	
 }
 #abouticon
 {
@@ -285,20 +288,67 @@ position: absolute;
 	color:white;
 
 }
-li a 
+li
 {
+
 	display: block;
     color: white;
     padding: 8px 16px;
     text-decoration: none;
     height:100px;
     width: 100%;
-
+    
 }
-li a:hover {
+li:hover {
     background-color: #553472;
     color: white;
 }
 .active {
-    background-color: #4CAF50;
+    background-color: blue;
+}
+li a:visited{
+	color: #6A6A6A;
+
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#myBtn
+{
+	position: absolute;
+	top: 300px;
+	left: 500px;
 }
