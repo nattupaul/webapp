@@ -15,7 +15,7 @@ Doctor's view
   });
 
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 <script type="text/javascript">
 var app = angular.module('doctor',[]);
 app.controller('MainCtrl', function ($scope, $http) {
@@ -45,16 +45,38 @@ var btn = document.getElementById("list1");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal 
-btn.onclick = function categoryController(drname, drage, drdepartment) {
-    modal.style.display = "block";
-  testmsg = "working";
-            var url = "http://localhost:category.txt";
-            $http.get(url).success(function (response) {
-            	document.getElementById("test").innerHTML = testmsg;
-                $scope.categories = response;
-            });
+btn.onclick =  function open() {
+    
+   modal.style.display = "block";
+   var request = {
+                method: 'get',
+                url: 'category.json',
+                dataType: 'json',
+                contentType: "application/json"
+            };
 
-        
+            $scope.arrBirds = new Array;
+
+            $http(request)
+                .success(function (jsonData) {
+                    $scope.arrBirds = jsonData;
+                    $scope.list = $scope.arrBirds;
+                })
+                .error(function () {
+
+                });
+
+<!-- 
+//$http.get('category.json').success(function(data){
+           // $scope.books = data;
+               
+
+          //alert("yes");
+       // })
+  -->
+
+
+
  var drJSON = '{ "name":"John", "age":31, "department":"Radiology" }';
 
 var myObj = JSON.parse(drJSON);
@@ -62,7 +84,7 @@ document.getElementById("drname").innerHTML = myObj.name;
 document.getElementById("drage").innerHTML = myObj.age;
 document.getElementById("drdepartment").innerHTML = myObj.department;
      
-
+ 
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -113,7 +135,7 @@ $scope.headers = response.headers();
 </script>
 
 </head>
-<body ng-controller="MainCtrl" background="background.jpg">
+<body ng-controller="MainCtrl" background="background.jpg" >
 	<ul>
 		<li id="list1"><input type="image" id="profileicon" src="medical.jpg" ><br><font color="white">Your Profile</font></input></li>
 		<li id="list2"><input type="image" id="loginicon" src="loginicon.jpg"><br><font color="white">Login page</font></input></li>
@@ -151,21 +173,18 @@ $scope.headers = response.headers();
 
 
 
-<div id="myModal" class="modal" ng-controller="categoryController">
+<div id="myModal" class="modal">
 
- 
+    
   
     <span class="close">&times;</span>
- oyt
- {{ msg1 }}
-    
-                Category ID
-               Category Name
+         
+       
            
-                {{ category.CategoryID }}
-               {{ category.CategoryName }}
-            <p id="test"></p>
   
+    oyt without 
+        {{list[4].Name}}   
+        {{list[3].Age}}
  <p id="drname"></p>
  <p id="drage"></p>
  <p id="drdepartment"></p>
