@@ -115,16 +115,16 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
-window.onclick = function(event) {
-    if (event.target == modal1) {
-        modal1.style.display = "none";
+    if(event.target == modal1)
+    {
+      modal1.style.display="none";
     }
 }
+
 var login = document.getElementById("list2");
 login.onclick= function()
 {
-	window.location.replace("file:///Users/sangeetha/Desktop/Experimental/webpagecode.html");
+	window.location.replace("file:///Users/sangeetha/Desktop/Doctor%20Side/webpagecode.html");
 } 
 
 $scope.postdata = function (name, gender, age, weight, p_id, symptoms, medicine, dosage, duration, nooftimes, specinst) {
@@ -219,11 +219,12 @@ $scope.headers = response.headers();
                     <th>Department</th>
                 </tr>
                 <tr id="deets" ng-repeat="x in myObject " >
-                    <th>{{x.id}}</th>
-                    <th>{{x.Car}}</th>
-                    <th>{{x.Model}}</th>
+                    <th>{{x.Name}}</th>
+                    <th>{{x.Age}}</th>
+                    <th>{{x.Department}}</th>
                 </tr>
             </table>
+             <span class="close">&times;</span>
            <!--<h3>Original JSON file: {{myObject}}</h3>  -->
   <!--
          <ul id="ulid" ng-repeat="birds in list">
@@ -231,7 +232,6 @@ $scope.headers = response.headers();
           <li> Yolo </li>
         </ul>
        -->
-           oye
   
    <!-- oyt without 
        <p> {{list[1].Name}} </p>  
@@ -243,7 +243,7 @@ $scope.headers = response.headers();
       -->
   
  
-    <span class="close">&times;</span>
+   
 
 </div>
 
