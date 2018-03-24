@@ -193,18 +193,64 @@ $scope.headers = response.headers();
   
   
 <div id="myModal1" class="modal1">
-           <table border="1">
+ 
+          <table id="ptable" ng-repeat="y in myObject ">
                 <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Department</th>
+                    <th>Name:</th>
+                    <th>{{y.Name}}</th>
+                    
                 </tr>
-                <tr id="deets" ng-repeat="x in myObject " >
-                    <th>{{x.id}}</th>
-                    <th>{{x.Car}}</th>
-                    <th>{{x.Model}}</th>
+                    <tr>
+                  <th>Age:</th>
+                  <th>{{y.Age}}</th>
                 </tr>
+                <tr>
+                  <th>Gender:</th>
+                  <th>{{y.Gender}}</th>
+                </tr>
+                <tr>
+                  <th>Weight:</th>
+                  <th>{{y.Weight}}</th>
+                </tr>
+                <tr>
+                  <th>Date of Birth:</th>
+                  <th>{{y.DOB}}</th>
+                </tr>
+                <tr>
+                  <th>Patient ID:</th>
+                  <th>{{y.PID}}</th>
+                </tr>
+                <tr>
+                  <th>Symptoms:</th>
+                  <th>{{y.Symp}}</th>
+                </tr>
+              <tr>
+                  <th>Medicine Name:</th>
+                  <th>{{y.MName}}</th>
+                </tr>
+                 
+                <tr>
+                  <th>Dosage:</th>
+                  <th>{{y.Dosage}}</th>
+                </tr>
+                 <tr>
+                  <th>Duration:</th>
+                  <th>{{y.Duration}}</th>
+                </tr>
+                 <tr>
+                  <th>No. of times:</th>
+                  <th>{{y.Nooftimes}}</th>
+                </tr>
+                 <tr>
+                  <th>Special Instructions:</th>
+                  <th>{{y.Specinst}}</th>
+                </tr>
+
+                
+                
+
             </table>
+            
 
  <span class="close1">&times;</span>
 
@@ -212,17 +258,26 @@ $scope.headers = response.headers();
 
 
 <div id="myModal" class="modal">
-            <table border="1">
+
+            <table id="table" ng-repeat="x in myObject ">
                 <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Department</th>
-                </tr>
-                <tr id="deets" ng-repeat="x in myObject " >
+                    <th>Name:</th>
                     <th>{{x.Name}}</th>
-                    <th>{{x.Age}}</th>
-                    <th>{{x.Department}}</th>
+                    
                 </tr>
+                
+                    
+                    
+                
+                <tr>
+                  <th>Age:</th>
+                  <th>{{x.Age}}</th>
+                </tr>
+                <tr>
+                  <th>Department:</th>
+                  <th>{{x.Department}}</th>
+                </tr>
+
             </table>
              <span class="close">&times;</span>
            <!--<h3>Original JSON file: {{myObject}}</h3>  -->
