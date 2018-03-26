@@ -23,7 +23,7 @@ var a=JSON.stringify(data);
 
 
 //Call the services
-$http.post('http://localhost:3000/',JSON.stringify(data)).then(function (response) {
+$http.post('http://localhost:3000/api/login',JSON.stringify(data)).then(function (response) {
 if (response.data)
 $scope.msg = "Post Data Submitted Successfully!";
 }, function (response) {
@@ -34,18 +34,35 @@ $scope.statustext = response.statusText;
 $scope.headers = response.headers();
 ;
 });
+$http.post('/api/login',data)
+    .then(
+        function(response) {
+            // success callback
+            alert("posted successfully");
+            $scope.message = "Login succesful";
 
+        },
+        function(response) {
+            // failure callback,handle error here
+            // response.data.message will be "This is an error!"
 
-if (a===b)
+            console.log(response.data.message);
+
+            $scope.message = response.data.message
+        }
+    );
+
+/*if (a===b)
 {
 	window.location.replace("file:///Users/sangeetha/Desktop/Doctor%20Side/doctorpage.html");
 }
 else
 {
-	alert("Error");
+	alert("Wrong Username or Password");
 location.reload();
 
 }
+*/
 	//document.write(b);
 
 //alert(user.username);
